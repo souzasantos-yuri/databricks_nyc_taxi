@@ -11,31 +11,161 @@
   "pages": [
     {
       "name": "92b35a66",
-      "displayName": "Untitled page",
+      "displayName": "Gold Layer",
       "layout": [
         {
           "widget": {
-            "name": "c6b723cd",
+            "name": "payment_pie",
             "queries": [
               {
                 "name": "main_query",
                 "query": {
                   "datasetName": "58d2e655",
-                  "disaggregated": true
+                  "fields": [
+                    {
+                      "name": "sum(n_trips)",
+                      "expression": "SUM(`n_trips`)"
+                    },
+                    {
+                      "name": "payment_type",
+                      "expression": "`payment_type`"
+                    }
+                  ],
+                  "disaggregated": false
                 }
               }
             ],
             "spec": {
               "version": 3,
-              "widgetType": "bar",
-              "encodings": {}
+              "frame": {
+                "title": "Total Trips by Payment Type",
+                "showTitle": true
+              },
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "sum(n_trips)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Total de viagens"
+                },
+                "color": {
+                  "fieldName": "payment_type",
+                  "displayName": "Tipo de pagamento",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              }
             }
           },
           "position": {
             "x": 0,
+            "y": 1,
+            "width": 6,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "date",
+            "queries": [
+              {
+                "name": "dashboards/01f154b62577129495181ee7fa65444b/datasets/01f154b6b07d1d76b371374bdcc2c1d0_pickup_date",
+                "query": {
+                  "datasetName": "58d2e655",
+                  "fields": [
+                    {
+                      "name": "pickup_date",
+                      "expression": "`pickup_date`"
+                    },
+                    {
+                      "name": "pickup_date_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "showDescription": false,
+                "title": "Date"
+              },
+              "widgetType": "filter-date-range-picker",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "pickup_date",
+                    "queryName": "dashboards/01f154b62577129495181ee7fa65444b/datasets/01f154b6b07d1d76b371374bdcc2c1d0_pickup_date"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
             "y": 0,
-            "width": 12,
-            "height": 10
+            "width": 6,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "46b75004",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "58d2e655",
+                  "fields": [
+                    {
+                      "name": "dow",
+                      "expression": "`dow`"
+                    },
+                    {
+                      "name": "sum(n_trips)",
+                      "expression": "SUM(`n_trips`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Trips by Day of Week",
+                "showTitle": true
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "dow",
+                  "displayName": "Dia da Semana",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(n_trips)",
+                  "displayName": "Total de viagens",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 1,
+            "width": 6,
+            "height": 8
           }
         }
       ],
