@@ -1,0 +1,52 @@
+{
+  "datasets": [
+    {
+      "name": "58d2e655",
+      "displayName": "NYC Taxi Daily Gold View Dataset",
+      "queryLines": [
+        "select * from main.nyc_taxi.vw_gold_daily"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "92b35a66",
+      "displayName": "Untitled page",
+      "layout": [
+        {
+          "widget": {
+            "name": "c6b723cd",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "58d2e655",
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {}
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 10
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
